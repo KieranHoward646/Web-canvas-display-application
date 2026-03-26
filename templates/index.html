@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kieran计划展示页面</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部导航栏 -->
+        <header class="app-header">
+            <div class="app-header__title">Kieran计划展示</div>
+            <div class="app-header__controls">
+                <button id="mode-toggle" class="btn btn-primary">切换到浏览模式</button>
+                <button id="add-text" class="btn btn-secondary">添加文本</button>
+                <button id="add-image" class="btn btn-secondary">添加图片</button>
+            </div>
+        </header>
+
+        <!-- 主内容区域 -->
+        <main class="app-main">
+            <!-- 编辑/上传模式 -->
+            <div id="edit-mode" class="edit-mode">
+                <!-- 左侧上传面板 -->
+                <div class="upload-panel">
+                    <h3>上传内容</h3>
+                    
+                    <!-- 文本上传表单 -->
+                    <div id="text-form" class="form-panel">
+                        <h4>文本模块</h4>
+                        <div class="form-group">
+                            <label for="text-title">标题</label>
+                            <input type="text" id="text-title" class="form-input" placeholder="输入标题">
+                        </div>
+                        <div class="form-group">
+                            <label for="text-content">内容</label>
+                            <textarea id="text-content" class="form-textarea" placeholder="输入详细内容"></textarea>
+                        </div>
+                        <button id="save-text" class="btn btn-primary">保存文本</button>
+                    </div>
+
+                    <!-- 图片上传表单 -->
+                    <div id="image-form" class="form-panel">
+                        <h4>图片模块</h4>
+                        <div class="form-group">
+                            <label for="image-title">标题</label>
+                            <input type="text" id="image-title" class="form-input" placeholder="输入图片标题">
+                        </div>
+                        <div class="form-group">
+                            <label for="image-upload">选择图片</label>
+                            <input type="file" id="image-upload" class="form-file" accept="image/*">
+                        </div>
+                        <button id="save-image" class="btn btn-primary">上传图片</button>
+                    </div>
+                </div>
+
+                <!-- 右侧预览画布 -->
+                <div class="preview-canvas">
+                    <div id="canvas" class="canvas"></div>
+                </div>
+            </div>
+
+            <!-- 展示/浏览模式 -->
+            <div id="browse-mode" class="browse-mode" style="display: none;">
+                <div id="browse-canvas" class="canvas"></div>
+            </div>
+        </main>
+
+        <!-- 底部操作栏 -->
+        <footer class="app-footer">
+            <button id="reset-btn" class="btn btn-danger">重置</button>
+            <button id="save-all" class="btn btn-primary">保存所有</button>
+        </footer>
+    </div>
+
+    <!-- 详情模态框 -->
+    <div id="detail-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <button id="close-modal" class="btn btn-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button id="delete-section" class="btn btn-danger">删除</button>
+                <button id="close-modal-btn" class="btn btn-primary">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 错误提示 -->
+    <div id="error-toast" class="toast toast-error" style="display: none;">
+        <div class="toast-content" id="error-message"></div>
+    </div>
+
+    <!-- 成功提示 -->
+    <div id="success-toast" class="toast toast-success" style="display: none;">
+        <div class="toast-content" id="success-message"></div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/drag-drop.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
